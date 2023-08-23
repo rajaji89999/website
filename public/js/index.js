@@ -33,7 +33,6 @@ if (loginForm) {
 if (logoutBtn) logoutBtn.addEventListener('click', logout);
 
 // Location
-console.log(addLocationForm);
 if (addLocationForm) {
   addLocationForm.addEventListener('submit', async (e) => {
     e.preventDefault();

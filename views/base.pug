@@ -7,7 +7,6 @@ html(lang="en")
             link(rel='icon' type='image/png' href='/img/favicon.png')
 
             //- Google Fonts
-            link(rel='stylesheet' href='https://fonts.gstatic.com')
             link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i')
             title #{title}
 
@@ -25,119 +24,6 @@ html(lang="en")
 
     // CONTENT
     block content
-
-    //- Modals
-    #addLocationModal.modal.fade(tabindex="-1")
-        .modal-dialog.mt-5
-            .modal-content
-                form#addLocationModalForm.needs-validation(novalidate)
-                    .modal-header
-                        h5.modal-title Add Location
-                        button.btn-close(type="button" data-bs-dismiss="modal" aria-label="Close")
-                    .modal-body
-                        .row.g-3
-                            .col-sm-12
-                                label.form-label(for="addLocationModal-locationName") Location Name
-                                input.form-control(id="addLocationModal-locationName",required)
-                                .invalid-feedback Location Name is required
-                        .row.g-3
-                            .col-sm-12
-                                label.form-label(for="addLocationModal-timeLabel") Time Label
-                                input.form-control(id="addLocationModal-timeLabel",required)
-                                .invalid-feedback Time Label is required
-                    .modal-footer
-                        button.btn.btn-secondary(type="button" data-bs-dismiss="modal") Cancel
-                        button.btn.btn-primary(type="submit") Save
-
-    #updateLocationModal.modal.fade(tabindex="-1")
-        .modal-dialog.mt-5
-            .modal-content
-                .modal-header
-                    h5.modal-title Location
-                    button.btn-close(type="button" data-bs-dismiss="modal" aria-label="Close")
-                .modal-body
-                    .row.mb-3
-                        label.col-sm-2.col-form-label Action
-                        .col-sm-10
-                            select.form-select
-                                option(selected, value="ADD") Add Location
-                                option(value="UPDATE") Update Location
-                                option(value="DELETE") Delete Location
-                .modal-footer
-                    button.btn.btn-secondary(type="button" data-bs-dismiss="modal") Cancel
-                    button.btn.btn-primary(type="button" data-bs-dismiss="modal") Save
-
-    #deleteLocationModal.modal.fade(tabindex="-1")
-        .modal-dialog.mt-5
-            .modal-content
-                .modal-header
-                    h5.modal-title Location
-                    button.btn-close(type="button" data-bs-dismiss="modal" aria-label="Close")
-                .modal-body
-                    .row.mb-3
-                        label.col-sm-2.col-form-label Action
-                        .col-sm-10
-                            select.form-select
-                                option(selected, value="ADD") Add Location
-                                option(value="UPDATE") Update Location
-                                option(value="DELETE") Delete Location
-                .modal-footer
-                    button.btn.btn-secondary(type="button" data-bs-dismiss="modal") Cancel
-                    button.btn.btn-primary(type="button" data-bs-dismiss="modal") Save
-
-    #updateResultModal.modal.fade(tabindex="-1")
-        .modal-dialog.mt-5
-            .modal-content
-                .modal-header
-                    h5.modal-title Location
-                    button.btn-close(type="button" data-bs-dismiss="modal" aria-label="Close")
-                .modal-body
-                    .row.mb-3
-                        label.col-sm-2.col-form-label Action
-                        .col-sm-10
-                            select.form-select
-                                option(selected, value="ADD") Add Location
-                                option(value="UPDATE") Update Location
-                                option(value="DELETE") Delete Location
-                .modal-footer
-                    button.btn.btn-secondary(type="button" data-bs-dismiss="modal") Cancel
-                    button.btn.btn-primary(type="button" data-bs-dismiss="modal") Save
-
-    #addBlankEntriesModal.modal.fade(tabindex="-1")
-        .modal-dialog.mt-5
-            .modal-content
-                .modal-header
-                    h5.modal-title Location
-                    button.btn-close(type="button" data-bs-dismiss="modal" aria-label="Close")
-                .modal-body
-                    .row.mb-3
-                        label.col-sm-2.col-form-label Action
-                        .col-sm-10
-                            select.form-select
-                                option(selected, value="ADD") Add Location
-                                option(value="UPDATE") Update Location
-                                option(value="DELETE") Delete Location
-                .modal-footer
-                    button.btn.btn-secondary(type="button" data-bs-dismiss="modal") Cancel
-                    button.btn.btn-primary(type="button" data-bs-dismiss="modal") Save
-
-    #addLocationModal.modal.fade(tabindex="-1")
-        .modal-dialog.mt-5
-            .modal-content
-                .modal-header
-                    h5.modal-title Location
-                    button.btn-close(type="button" data-bs-dismiss="modal" aria-label="Close")
-                .modal-body
-                    .row.mb-3
-                        label.col-sm-2.col-form-label Action
-                        .col-sm-10
-                            select.form-select
-                                option(selected, value="ADD") Add Location
-                                option(value="UPDATE") Update Location
-                                option(value="DELETE") Delete Location
-                .modal-footer
-                    button.btn.btn-secondary(type="button" data-bs-dismiss="modal") Cancel
-                    button.btn.btn-primary(type="button" data-bs-dismiss="modal") Save
 
     block script
         //- Vendor JS Files
