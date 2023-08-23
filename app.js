@@ -26,13 +26,13 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
-const limiter = rateLimit({
-  max: 25,
-  windowMs: 60 * 1000,
-  message: 'Too many requests from this IP, please try again after a minute.',
-});
+// const limiter = rateLimit({
+//   max: 25,
+//   windowMs: 60 * 1000,
+//   message: 'Too many requests from this IP, please try again after a minute.',
+// });
 
-app.use('/api', limiter);
+// app.use('/api', limiter);
 
 app.use(express.json({ limit: '10kb' }));
 app.use(cookieParser());
