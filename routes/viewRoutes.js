@@ -10,9 +10,9 @@ const {
 const { isLoggedIn } = require('./../controllers/authController');
 const router = express.Router();
 
-router.use(isLoggedIn);
-
 router.get('/', getHome);
+
+router.use(isLoggedIn);
 
 router.get('/admin/add-location', getAddLocation);
 router.get('/admin/update-location', getUpdateLocation);
