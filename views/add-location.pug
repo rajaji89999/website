@@ -1,0 +1,21 @@
+extends base
+
+
+block content
+  include _header
+
+  main.page-margin.d-flex.justify-content-center.align-items-center
+    form#addLocationForm.needs-validation.flex-1.mt-5(novalidate)
+      .row.mb-3.justify-content-center
+        .col-sm-12.col-md-4
+          label.form-label(for="addLocationForm-locationName") Location Name
+          input.form-control(id="addLocationForm-locationName",required)
+          .invalid-feedback Location Name is required
+      .row.mb-3.justify-content-center
+          .col-sm-12.col-md-4
+              label.form-label(for="addLocationForm-timeLabel") Time Label
+              input.form-control(id="addLocationForm-timeLabel",required)
+              .invalid-feedback Time Label is required
+      .row.g-3.mb-3.justify-content-center
+        .col-sm-12.col-md-4.d-flex.justify-content-center
+          button.btn.btn-primary.w-75(type="submit") Add Location

@@ -1,0 +1,85 @@
+extends base
+
+
+block content
+    body.home
+
+        // HEADER
+        include _header
+
+        .card.main-title-card.page-margin-top
+            .card-body
+                h1.fw-bold Admin
+
+        if (recentData.name && recentData.result && recentData.timeLabel)
+            .card.main-title-card
+                .card-body
+                    h5.main-title-text.fw-bold.fs-4 #{recentData.name}
+                    h4.main-title-text.fw-semibold.fs-6 #{recentData.timeLabel}
+                    h5.main-title-text.fw-bold.fs-5 #{recentData.result}
+
+
+        main#main(class=`main ml-0 mt-0`)
+            section.section
+                .card.mb-5
+                    .card-body
+                        h5.card-title.text-center.fs-3 Result
+
+                        table.table.table-bordered.mb-0
+                            thead
+                                tr
+                                    th.table-active(scope="col") Location
+                                    th.table-active(scope="col") Yesterday
+                                    th.table-active(scope="col") Today
+                            tbody
+                                each location in todayData.data
+                                    tr
+                                        th.table-active(scope="row") 
+                                            h5 #{location.location}
+                                            h5.fw-semibold #{location.timeLabel}
+                                            h6 Result Time
+                                        each result in location.results
+                                            td.align-middle #{result.result}
+
+                .card.mb-5.overflow-auto
+                        h5.card-title.text-center.fs-3 #{currentMonth.name} Chart
+                        .card-body.overflow-auto
+
+                            table.table.table-bordered.mb-0
+                                thead
+                                    tr
+                                        th.table-active(scope="col") Date
+                                        each location in currentMonth.data
+                                            th.table-active.min-width-120px(scope="col") #{location.location}
+                                tbody
+                                    each date in currentMonth.dateArray
+                                        tr
+                                            th.table-active.min-width-120px(scope="row") #{currentMonth.todayDate === date ? "Today" : date }
+                                            each location in currentMonth.data
+                                                each result in location.results
+                                                    if (result.resultDate === date)
+                                                        td.align-middle #{result.result}
+
+                .card.mb-5
+                        h5.card-title.text-center.fs-3 #{prevMonth.name} Chart
+                        .card-body.overflow-auto
+
+                            table.table.table-bordered.mb-0
+                                thead
+                                    tr
+                                        th.table-active(scope="col") Date
+                                        each location in prevMonth.data
+                                            th.table-active.min-width-120px(scope="col") #{location.location}
+                                tbody
+                                    each date in prevMonth.dateArray
+                                        tr
+                                            th.table-active.min-width-120px(scope="row") #{date}
+                                            each location in prevMonth.data
+                                                each result in location.results
+                                                    if (result.resultDate === date)
+                                                        td.align-middle #{result.result}
+        a.back-to-top.d-flex.align-items-center.justify-content-center(href="#")
+            i.bi.bi-arrow-up-short
+
+        // FOOTER
+        include _footer

@@ -1,0 +1,35 @@
+extends base
+
+block content
+    body
+
+        // HEADER
+        include _header
+
+        // CONTENT
+        main
+            .container
+                section.section.register.min-vh-100.d-flex.flex-column.align-items-center.justify-content-center.py-4
+                    .container
+                        .row.justify-content-center
+                            .col-lg-4.col-md-6.d-flex.flex-column.align-items-center.justify-content-center
+                                .card.mb-3
+                                    .card-body
+                                        .pt-4.pb-2
+                                            h5.card-title.text-center.pb-0.fs-4 Login to Your Account
+                                        form.row.g-3.needs-validation.form(novalidate)
+                                            .col-12
+                                                label.form-label(for="yourUsername") Username
+                                                .input-group.has-validation
+                                                    input#email.form-control(type="text",name="username",required)
+                                                    .invalid-feedback Please enter your username.
+                                            .col-12
+                                                label.form-label(for="yourPassword") Password
+                                                .input-group.has-validation
+                                                    input#password.form-control(type="password",name="password",required)
+                                                    .invalid-feedback Please enter your password!
+                                            .col-12
+                                                button.btn.btn-primary.w-100(type="submit") Login
+
+        a.back-to-top.d-flex.align-items-center.justify-content-center(href="#")
+        i.bi.bi-arrow-up-short

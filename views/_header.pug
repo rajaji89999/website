@@ -1,0 +1,31 @@
+header#header.header.fixed-top.d-flex.align-items-center
+    div.d-flex.align-items-center.justify-content-between
+        a.logo.d-flex.align-items-center(href='/')
+            img(src='/img/logo.png' alt='Home')
+            span Admin
+    nav.header-nav.ms-auto
+        ul.d-flex.align-items-center
+            li.nav-item.dropdown
+                a.nav-link.nav-icon(href="/")
+                    span.link Home
+            if (user && user.role === "admin")
+                li.nav-item.dropdown
+                    a.nav-link.nav-icon(href="#" data-bs-toggle="dropdown") 
+                        span.link Admin
+                        ul.dropdown-menu.dropdown-menu-end
+                            li
+                                a.dropdown-item(href="/admin/add-location") Add Location
+                            li
+                                a.dropdown-item(href="/admin/update-location") Update Location
+                            li
+                                a.dropdown-item(href="/admin/delete-location") Delete Location
+                            li
+                                a.dropdown-item(href="/admin/update-result") Update Result
+
+                li.nav-item.dropdown
+                    a.nav-link.nav-icon(href="#")
+                        span.link.logout-btn Log Out
+            else
+                li.nav-item.dropdown
+                    a.nav-link.nav-icon(href="/login")
+                        span.link Login

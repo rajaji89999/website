@@ -1,0 +1,28 @@
+extends base
+
+
+block content
+  include _header
+
+  main.page-margin.d-flex.justify-content-center.align-items-center
+    form#updateResultForm.needs-validation.flex-1.mt-5(novalidate)
+      .row.mb-3.justify-content-center
+        .col-sm-12.col-md-4
+          select.form-select(id="updateResultForm-selectLocation",required)
+            option(selected,disabled,value="") Select Location
+            each location in locations
+              option(value=location._id) #{location.name}
+          .invalid-feedback Location is required
+      .row.mb-3.justify-content-center
+        .col-sm-12.col-md-4
+          label.form-label(for="updateResultForm-resultDate") Result Date
+          input.form-control(type="date",id="updateResultForm-resultDate",required)
+          .invalid-feedback Result Date is required
+      .row.mb-3.justify-content-center
+        .col-sm-12.col-md-4
+          label.form-label(for="updateResultForm-result") Result
+          input.form-control(id="updateResultForm-result",required)
+          .invalid-feedback Result is required
+      .row.g-3.mb-3.justify-content-center
+        .col-sm-12.col-md-4.d-flex.justify-content-center
+          button.btn.btn-warning.w-75(type="submit") Update Result

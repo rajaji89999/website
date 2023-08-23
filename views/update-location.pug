@@ -1,0 +1,28 @@
+extends base
+
+
+block content
+  include _header
+
+  main.page-margin.d-flex.justify-content-center.align-items-center
+    form#updateLocationForm.needs-validation.flex-1.mt-5(novalidate)
+      .row.mb-3.justify-content-center
+        .col-sm-12.col-md-4
+          select.form-select(id="updateLocationForm-selectLocation",required)
+            option(selected,disabled,value="") Select Location 
+            each location in locations
+              option(value=location._id) #{location.name}
+          .invalid-feedback Location is required
+      .row.mb-3.justify-content-center
+        .col-sm-12.col-md-4
+          label.form-label(for="updateLocationForm-locationName") Location Name
+          input.form-control(id="updateLocationForm-locationName",required)
+          .invalid-feedback Location Name is required
+      .row.mb-3.justify-content-center
+          .col-sm-12.col-md-4
+              label.form-label(for="updateLocationForm-timeLabel") Time Label
+              input.form-control(id="updateLocationForm-timeLabel",required)
+              .invalid-feedback Time Label is required
+      .row.g-3.mb-3.justify-content-center
+        .col-sm-12.col-md-4.d-flex.justify-content-center
+          button.btn.btn-warning.w-75(type="submit") Update Location

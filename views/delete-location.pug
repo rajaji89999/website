@@ -1,0 +1,18 @@
+extends base
+
+
+block content
+  include _header
+
+  main.page-margin.d-flex.justify-content-center.align-items-center
+    form#deleteLocationForm.needs-validation.flex-1.mt-5(novalidate)
+      .row.mb-3.justify-content-center
+        .col-sm-12.col-md-4
+          select.form-select(id="deleteLocationForm-selectLocation",required)
+            option(selected,disabled,value="") Select Location
+            each location in locations
+              option(value=location._id) #{location.name}
+          .invalid-feedback Location is required
+      .row.g-3.mb-3.justify-content-center
+        .col-sm-12.col-md-4.d-flex.justify-content-center
+          button.btn.btn-danger.w-75(type="submit") Delete Location

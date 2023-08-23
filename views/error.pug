@@ -1,0 +1,17 @@
+extends base
+
+
+block content
+    body
+      main
+        .container
+          section.section.error-404.min-vh-100.d-flex.flex-column.align-items-center.justify-content-center
+            h1 404 
+            h2 The page you are looking for doesn't exist.
+            a.btn(href="/") Back to home
+            img.img-fluid.py-5(src="/img/not-found.svg",alt="Page Not Found")
+      a.back-to-top.d-flex.align-items-center.justify-content-center(href="#")
+        i.bi.bi-arrow-up-short
+
+    script(src='/js/main.js')
+    script(src='/js/bundle.js')
