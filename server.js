@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const moment = require("moment");
 
 process.on('uncaughtException', (err) => {
   console.log('UNCAUGHT REJECTION 😑. Shutting down...');
@@ -29,6 +30,7 @@ mongoose
   })
   .then((res) => {
     console.log(`App connected with ${res.connection.name} database`);
+    console.log("Moment Locale: ", moment.locale())
   });
 
 const server = app.listen(port, () => {
