@@ -135,9 +135,12 @@ exports.logout = (req, res) => {
 
 // Only for rendered pages, no errors!
 exports.isLoggedIn = async (req, res, next) => {
+  console.log({cookies: JSON.stringify(req?.cookies)})
   if (req?.cookies?.jwt) {
     try {
       let token = req.cookies.jwt;
+
+      console.log({token})
 
       // 1. Verify Token
       const decoded = await promisify(jwt.verify)(
@@ -145,14 +148,14 @@ exports.isLoggedIn = async (req, res, next) => {
         process.env.JWT_SECRET
       );
 
+      console.log({decoded})
+
       const currentUser = await User.findById(decoded.id);
+
+      console.log({currentUser})
 
       // 2. Check if user still exists
       if (!currentUser) {
-        return next();
-      }
-
-      if (await currentUser.changedPasswordAfter(decoded.iat)) {
         return next();
       }
 
