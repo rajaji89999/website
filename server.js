@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const moment = require("moment");
+const moment = require("moment-timezone");
 
 process.on('uncaughtException', (err) => {
   console.log('UNCAUGHT REJECTION 😑. Shutting down...');
