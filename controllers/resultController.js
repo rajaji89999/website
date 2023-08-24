@@ -2,7 +2,7 @@ const catchAsync = require('../utils/catchAsync');
 const Location = require('../models/locationModel');
 const Result = require('../models/resultModel');
 const mongoose = require('mongoose');
-const moment = require('moment');
+const moment = require('moment-timezone');
 
 const groupResultsByLocation = async (
   results = [],
@@ -26,16 +26,16 @@ const groupResultsByLocation = async (
       groupedData[name].results = [
         {
           result: '-',
-          resultDate: moment().subtract(1, 'day').format('DD-MM-YYYY'),
+          resultDate: moment().tz("Asia/Kolkata").subtract(1, 'day').format('DD-MM-YYYY'),
         },
         {
           result: 'Wait',
-          resultDate: moment().format('DD-MM-YYYY'),
+          resultDate: moment().tz("Asia/Kolkata").format('DD-MM-YYYY'),
         },
       ];
     } else {
       // Generate results for the entire month
-      const currentDate = moment();
+      const currentDate = moment().tz("Asia/Kolkata");
       const monthStart = currentDate.startOf('month');
       const daysInMonth = isCurrentMonth
         ? new Date().getDate()
@@ -65,8 +65,8 @@ const groupResultsByLocation = async (
       );
 
       if (isTodayResult) {
-        const todayDate = moment().format('DD-MM-YYYY');
-        const yesterdayDate = moment().subtract(1, 'day').format('DD-MM-YYYY');
+        const todayDate = moment().tz("Asia/Kolkata").format('DD-MM-YYYY');
+        const yesterdayDate = moment().tz("Asia/Kolkata").subtract(1, 'day').format('DD-MM-YYYY');
 
         const yesterdayResult = results.find(
           (entry) =>
@@ -139,7 +139,7 @@ exports.updateResult = catchAsync(async (req, res, next) => {
 
 exports.getRecentResultFunc = async () => {
   const results = await Result.find({
-    resultDate: moment().format('YYYY-MM-DD'),
+    resultDate: moment().tz("Asia/Kolkata").format('YYYY-MM-DD'),
   })
     .populate('locationId')
     .sort({
@@ -158,8 +158,8 @@ exports.getRecentResult = catchAsync(async (req, res, next) => {
 });
 
 exports.getTodayResultFunc = async () => {
-  const yesterdayDate = moment().subtract(1, 'day').format('YYYY-MM-DD');
-  const todayDate = moment().format('YYYY-MM-DD');
+  const yesterdayDate = moment().tz("Asia/Kolkata").subtract(1, 'day').format('YYYY-MM-DD');
+  const todayDate = moment().tz("Asia/Kolkata").format('YYYY-MM-DD');
 
   const results = await Result.find({
     $and: [
@@ -188,9 +188,9 @@ exports.getTodayResult = catchAsync(async (req, res, next) => {
 });
 
 exports.getCurrentMonthResultFunc = async () => {
-  const momentMonthStartDate = moment().clone().startOf('month');
+  const momentMonthStartDate = moment().tz("Asia/Kolkata").clone().startOf('month');
   const monthStartDate = momentMonthStartDate.format('YYYY-MM-DD');
-  const todayDate = moment().format('YYYY-MM-DD');
+  const todayDate = moment().tz("Asia/Kolkata").format('YYYY-MM-DD');
 
   const results = await Result.find({
     $and: [
@@ -218,7 +218,7 @@ exports.getCurrentMonthResult = catchAsync(async (req, res, next) => {
 });
 
 exports.getPreviousMonthResultFunc = async () => {
-  const momentPrevMonthStartDate = moment()
+  const momentPrevMonthStartDate = moment().tz("Asia/Kolkata")
     .clone()
     .subtract(1, 'month')
     .startOf('month');

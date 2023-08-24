@@ -26,11 +26,6 @@ app.use(morgan('dev'));
 app.use(express.json({ limit: '10kb' }));
 app.use(cookieParser());
 
-app.use((req, res, next) => {
-  req.requestTime = new Date().toISOString();
-  next();
-});
-
 // Routes(Middlewares)
 app.use('/', viewRouter);
 app.use('/api', appRouter);

@@ -1,4 +1,6 @@
 const express = require('express');
+const moment = require('moment-timezone');
+
 const {
   getHome,
   getLoginForm,
@@ -9,6 +11,13 @@ const {
 } = require('./../controllers/viewsController');
 const { isLoggedIn } = require('./../controllers/authController');
 const router = express.Router();
+
+router.use("/", (req, res, next) => {
+  console.log("Default Time: ", moment().format("LLL"))
+  console.log("India Time: ", moment().tz("Asia/Kolkata").format("LLL"))
+
+  next();
+})
 
 router.get('/', getHome);
 
