@@ -31,6 +31,8 @@ mongoose
   .then((res) => {
     console.log(`App connected with ${res.connection.name} database`);
     console.log("Moment Locale: ", moment.locale())
+    console.log("Default Date: ", moment().format("YYYY-MM-DD"))
+    console.log("India Date: ", moment().tz("Asia/Kolkata").format("YYYY-MM-DD"))
   });
 
 const server = app.listen(port, () => {
