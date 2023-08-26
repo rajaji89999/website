@@ -19,9 +19,9 @@ router.use("/", (req, res, next) => {
   next();
 })
 
-router.get('/', getHome);
 
 router.use(isLoggedIn);
+router.get('/', getHome);
 
 router.get('/admin/add-location', getAddLocation);
 router.get('/admin/update-location', getUpdateLocation);
