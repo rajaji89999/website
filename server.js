@@ -30,7 +30,6 @@ mongoose
   })
   .then((res) => {
     console.log(`App connected with ${res.connection.name} database`);
-    console.log("Moment Locale: ", moment.locale())
   });
 
 const server = app.listen(port, () => {

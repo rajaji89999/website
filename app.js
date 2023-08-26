@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 app.use(helmet());
 
-app.use(morgan('dev'));
+// app.use(morgan('dev'));
 
 app.use(express.json({ limit: '10kb' }));
 app.use(cookieParser());

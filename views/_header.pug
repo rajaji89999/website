@@ -4,28 +4,34 @@ header#header.header.fixed-top.d-flex.align-items-center
             img(src='/img/logo.png' alt='Home')
             span B1Satta
     nav.header-nav.ms-auto
-        ul.d-flex.align-items-center
-            li.nav-item.dropdown
-                a.nav-link.nav-icon(href="/")
-                    span.link Home
-            if (user && user.role === "admin")
-                li.nav-item.dropdown
-                    a.nav-link.nav-icon(href="#" data-bs-toggle="dropdown") 
-                        span.link Admin
-                        ul.dropdown-menu.dropdown-menu-end
-                            li
-                                a.dropdown-item(href="/admin/add-location") Add Location
-                            li
-                                a.dropdown-item(href="/admin/update-location") Update Location
-                            li
-                                a.dropdown-item(href="/admin/delete-location") Delete Location
-                            li
-                                a.dropdown-item(href="/admin/update-result") Update Result
+            ul.d-flex.align-items-center
+                if (user && user.role === "admin")
+                    li.nav-item.dropdown
+                        a.nav-link.nav-icon(href="/")
+                            span.link Home
 
-                li.nav-item.dropdown
-                    a.nav-link.nav-icon(href="#")
-                        span.link.logout-btn Log Out
-            else
-                li.nav-item.dropdown
-                    a.nav-link.nav-icon(href="/login")
-                        span.link Login
+                    li.nav-item.dropdown
+                        a.nav-link.nav-icon(href="#" data-bs-toggle="dropdown") 
+                            span.link Admin
+                            ul.dropdown-menu.dropdown-menu-end
+                                li
+                                    a.dropdown-item(href="/admin/add-location") Add Location
+                                li
+                                    a.dropdown-item(href="/admin/update-location") Update Location
+                                li
+                                    a.dropdown-item(href="/admin/delete-location") Delete Location
+                                li
+                                    a.dropdown-item(href="/admin/update-result") Update Result
+                
+                    li.nav-item.dropdown
+                        a.nav-link.nav-icon(href="#")
+                            span.link.logout-btn Log Out
+
+                else
+                    li.nav-item.dropdown
+                    a.nav-link.nav-icon(href="#" data-bs-toggle="dropdown")
+                        span.link
+                            i.bi.bi-list.toggle-sidebar-btn
+                        ul.dropdown-menu.dropdown-menu-end
+                                li
+                                    a.dropdown-item(href="/login") Login

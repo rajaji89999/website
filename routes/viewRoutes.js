@@ -12,12 +12,12 @@ const {
 const { isLoggedIn } = require('./../controllers/authController');
 const router = express.Router();
 
-router.use("/", (req, res, next) => {
-  console.log("Default Time: ", moment().format("LLL"))
-  console.log("India Time: ", moment().tz("Asia/Kolkata").format("LLL"))
+// router.use("/", (req, res, next) => {
+//   console.log("Default Time: ", moment().format("LLL"))
+//   console.log("India Time: ", moment().tz("Asia/Kolkata").format("LLL"))
 
-  next();
-})
+//   next();
+// })
 
 
 router.use(isLoggedIn);
