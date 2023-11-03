@@ -7,6 +7,7 @@ import {
   updateLocation,
   deleteLocation,
   updateResult,
+  updateChartSettings,
 } from './apis';
 
 // DOM ELEMENTS
@@ -19,6 +20,9 @@ const updateLocationFormLocationSelectEl = document.querySelector(
 const updateLocationForm = document.querySelector('#updateLocationForm');
 const deleteLocationForm = document.querySelector('#deleteLocationForm');
 const updateResultForm = document.querySelector('#updateResultForm');
+const updateChartSettingsForm = document.querySelector(
+  '#updateChartSettingsForm'
+);
 
 // Authentication
 if (loginForm) {
@@ -107,5 +111,40 @@ if (updateResultForm) {
     const result = resultEl?.value;
 
     await updateResult(locationId, resultDate, result);
+  });
+}
+
+if (updateChartSettingsForm) {
+  updateChartSettingsForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const isChartEnabledEl = document.querySelector(
+      '#updateChartSettingsForm-isChartEnabled'
+    );
+    const isChartEnabled = isChartEnabledEl?.value;
+
+    const headerTextEl = document.querySelector(
+      '#updateChartSettingsForm-header'
+    );
+    const headerText = headerTextEl?.value;
+
+    const footerTextEl = document.querySelector(
+      '#updateChartSettingsForm-footer'
+    );
+    const footerText = footerTextEl?.value;
+
+    const whatsappNoTextEl = document.querySelector(
+      '#updateChartSettingsForm-whatsappNo'
+    );
+    const whatsappNoText = whatsappNoTextEl?.value;
+
+    console.log({ isChartEnabled, headerText, footerText, whatsappNoText });
+
+    await updateChartSettings(
+      isChartEnabled,
+      headerText,
+      footerText,
+      whatsappNoText
+    );
   });
 }

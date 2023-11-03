@@ -146,10 +146,28 @@ exports.getRecentResultFunc = async () => {
       updatedAt: -1,
     });
 
+  let recentTimeLabel = null;
+  let dataToSend = [];
+  if (results && results?.length) {
+    dataToSend = results
+      .map((result, index) => {
+        if (index === 0) {
+          recentTimeLabel = result?.locationId?.timeLabel;
+        }
+        if (result?.result != '-') {
+          return {
+            name: result?.locationId?.name,
+            timeLabel: result?.locationId?.timeLabel,
+            result: result?.result,
+          };
+        }
+      })
+      .filter((el) => el?.result != '-' && el?.timeLabel === recentTimeLabel);
+  }
+
   return {
     message: 'Recent Result Success!',
-    data:
-      results && results.length && results[0].result != '-' ? results[0] : null,
+    data: dataToSend || [],
   };
 };
 

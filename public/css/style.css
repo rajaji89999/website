@@ -1324,3 +1324,33 @@ h6 {
   height: 1px;
   background: #ddd;
 }
+
+.chart.card {
+  background: linear-gradient(180deg, black, #114982);
+  color: white;
+}
+
+.chart .card-body {
+  text-align: center;
+  padding: 20px;
+}
+
+.chart .card-body .title {
+  font-weight: 600;
+}
+
+.chart .card-body .chart-header {
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.chart .card-body .location {
+  font-weight: bolder;
+}
+.chart .card-body .note {
+  font-weight: bold;
+}
+.chart .card-body .chart-footer {
+  font-size: 16px;
+  font-weight: bold;
+}

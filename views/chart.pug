@@ -1,0 +1,22 @@
+.card.mb-5.chart
+  //- h5.card-title.text-center.fs-3 #{prevMonth.name} Chart
+  .card-body
+    p.title 💰सीधे सत्ता कंपनी की No 1 खाईवाल 💰
+
+    if (chartDetails.header)
+      p.chart-header #{chartDetails.header}
+
+    each location in todayData.data
+      p.location ⏰#{location.location} ---------------- #{location.timeLabel}
+
+    if (chartDetails.footer)
+      p.chart-footer #{chartDetails.footer}
+
+    p.note 👉बिंदास होकर प्ले करे खाईवाल की ईमानदारी की ज़िम्मेवारी सत्ता कंपनी मैनेजर की है👈
+
+    p.note 👇🏻प्ले करने के लिए यहाँ दबाए 👇🏻
+
+    if (chartDetails.whatsappNo)
+      a(href=`https://wa.me/${chartDetails.whatsappNo}?text=Hello`)
+        img(src='/img/whatsapp-chat.png' alt='Home' onclick='' width=175)
+

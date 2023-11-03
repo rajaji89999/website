@@ -11,12 +11,13 @@ block content
             .card-body
                 h1.fw-bold B1Satta
 
-        if (recentData.name && recentData.result && recentData.timeLabel)
-            .card.main-title-card
-                .card-body
-                    h5.main-title-text.fw-bold.fs-4 #{recentData.name}
-                    h4.main-title-text.fw-semibold.fs-6 #{recentData.timeLabel}
-                    h5.main-title-text.fw-bold.fs-5 #{recentData.result}
+        each recentLocation in recentData
+            if (recentLocation.name && recentLocation.result && recentLocation.timeLabel)
+                .card.main-title-card
+                    .card-body
+                        h5.main-title-text.fw-bold.fs-4 #{recentLocation.name}
+                        h4.main-title-text.fw-semibold.fs-6 #{recentLocation.timeLabel}
+                        h5.main-title-text.fw-bold.fs-5 #{recentLocation.result}
 
 
         main#main(class=`main ml-0 mt-0`)
@@ -40,6 +41,10 @@ block content
                                             h6 Result Time
                                         each result in location.results
                                             td.align-middle #{result.result}
+
+                //- Chart Bock
+                if (isChartEnabled)
+                    include chart
 
                 .card.mb-5.overflow-auto
                         h5.card-title.text-center.fs-3 #{currentMonth.name} Chart

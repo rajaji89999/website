@@ -152,3 +152,36 @@ export const updateResult = async (locationId, resultDate, result) => {
     showAlert('error', err.response.data.message);
   }
 };
+
+export const updateChartSettings = async (
+  isChartEnabled = false,
+  header = '',
+  footer = '',
+  whatsappNo = ''
+) => {
+  try {
+    const res = await axios({
+      method: 'PATCH',
+      url: `/api/config/update`,
+      data: {
+        isChartEnabled: isChartEnabled === 'YES' ? true : false,
+        chartDetails: {
+          header,
+          footer,
+          whatsappNo,
+        },
+      },
+    });
+
+    if (res.data.status === 'success') {
+      showAlert('success', res.data.message);
+
+      window.setTimeout(() => {
+        location.reload();
+      }, 500);
+    }
+  } catch (err) {
+    console.error(err);
+    showAlert('error', err.response.data.message);
+  }
+};

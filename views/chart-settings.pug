@@ -1,0 +1,30 @@
+extends base
+
+
+block content
+  include _header
+
+  main.page-margin.d-flex.justify-content-center.align-items-center
+    form#updateChartSettingsForm.needs-validation.flex-1.mt-5(novalidate)
+      .row.mb-3.justify-content-center
+        .col-sm-12.col-md-4
+          #{isChartEnabled}
+          label.form-label(for="updateChartSettingsForm-isChartEnabled") Enable Chart
+          select.form-select(id="updateChartSettingsForm-isChartEnabled")
+            option(selected=isChartEnabled,value="YES") Yes
+            option(selected=!isChartEnabled,value="NO") No
+      .row.mb-3.justify-content-center
+        .col-sm-12.col-md-4
+          label.form-label(for="updateChartSettingsForm-header") Header Text
+          input.form-control(id="updateChartSettingsForm-header",value=chartDetails.header)
+      .row.mb-3.justify-content-center
+        .col-sm-12.col-md-4
+          label.form-label(for="updateChartSettingsForm-footer") Footer Text
+          input.form-control(id="updateChartSettingsForm-footer",value=chartDetails.footer)
+      .row.mb-3.justify-content-center
+        .col-sm-12.col-md-4
+          label.form-label(for="updateChartSettingsForm-whatsappNo") Whatsapp Number
+          input.form-control(id="updateChartSettingsForm-whatsappNo",value=chartDetails.whatsappNo)
+      .row.g-3.mb-3.justify-content-center
+        .col-sm-12.col-md-4.d-flex.justify-content-center
+          button.btn.btn-warning.w-75(type="submit") Update Chart
