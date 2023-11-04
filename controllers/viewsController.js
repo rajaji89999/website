@@ -57,7 +57,7 @@ const todayDataFormattor = (monthData = {}) => {
 const monthDataFormattor = (monthData = {}) => {
   return {
     name: monthData.monthName,
-    data: monthData.data || [],
+    data: sortDataByTime(monthData.data) || [],
     dateArray:
       (monthData?.data &&
         monthData?.data[0]?.results?.map((el) => el.resultDate)) ||
