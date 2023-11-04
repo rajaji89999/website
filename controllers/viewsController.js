@@ -33,6 +33,16 @@ const sortDataByTime = (data = []) => {
       .sort((a, b) => a.numericValue - b.numericValue)
       .map((item) => {
         delete item.numericValue;
+        if(item.location.includes("DISAWAR")) {
+          item.sequenceNumber = 1;
+        } else{
+          item.sequenceNumber = 0;
+        }
+        return item;
+      })
+      .sort((a, b) => a.sequenceNumber - b.sequenceNumber)
+      .map((item) => {
+        delete item.sequenceNumber;
         return item;
       })
   );
