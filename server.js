@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const moment = require("moment-timezone");
 
 process.on('uncaughtException', (err) => {
   console.log('UNCAUGHT REJECTION 😑. Shutting down...');
@@ -22,7 +21,7 @@ const DB = process.env.DATABASE?.replace(
 const LocalDB = process.env.DATABASE_LOCAL;
 
 mongoose
-  .connect(DB, {
+  .connect(process.env.NODE_ENV === 'development' ? LocalDB : DB, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,

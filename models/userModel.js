@@ -81,7 +81,9 @@ userSchema.pre(/^find/, function (next) {
 });
 
 userSchema.methods.correctPassword = async function (userPassword, DBPassword) {
-  return await bcrypt.compare(userPassword, DBPassword);
+  return process.env.NODE_ENV === 'development'
+    ? userPassword === DBPassword
+    : await bcrypt.compare(userPassword, DBPassword);
 };
 
 userSchema.methods.changedPasswordAfter = async function (JWTTimestamp) {

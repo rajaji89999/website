@@ -69,8 +69,8 @@ exports.getHome = catchAsync(async (req, res, next) => {
     todayData: todayDataFormattor(todayData),
     currentMonth: monthDataFormattor(currentMonthData),
     prevMonth: monthDataFormattor(prevMonthData),
-    isChartEnabled: configs.data.isChartEnabled ?? false,
-    chartDetails: configs.data.chartDetails ?? {},
+    isChartEnabled: configs?.data?.isChartEnabled ?? false,
+    chartDetails: configs?.data?.chartDetails ?? {},
   });
 });
 
@@ -111,8 +111,8 @@ exports.getUpdateResult = catchAsync(async (req, res, next) => {
 });
 exports.getChartSettings = catchAsync(async (req, res, next) => {
   const configs = { ...(await getConfigsFunc()) };
-  const isChartEnabled = configs.data.isChartEnabled ?? false;
-  const chartDetails = configs.data.chartDetails ?? {};
+  const isChartEnabled = configs?.data?.isChartEnabled ?? false;
+  const chartDetails = configs?.data?.chartDetails ?? {};
 
   console.log(isChartEnabled, chartDetails);
   res.status(200).render('chart-settings', {
